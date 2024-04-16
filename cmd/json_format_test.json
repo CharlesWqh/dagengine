@@ -1,0 +1,19 @@
+{
+  "name": "json_format_test.json",
+  "graph": [
+    {
+      "name": "enter",
+      "vertex": [
+        {
+          "processor": "phase0"
+        },
+        {
+          "processor": "phase1",
+          "args": {
+            "name": "ID"
+          }
+        }
+      ]
+    }
+  ]
+}

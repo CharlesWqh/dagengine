@@ -1,0 +1,33 @@
+name = "aggregate_test.toml"
+
+[[graph]]
+name = "enter"
+
+[[graph.vertex]]
+processor = "phase0"
+args = {name="v00",id=0}
+
+
+[[graph.vertex]]
+processor = "phase1"
+args = {name="v01",id=0}
+
+
+[[graph.vertex]]
+processor = "phase0"
+id = "p01"
+args = {name="v10",id=1}
+output = [{field="Mid",id="Mid1"}]
+
+[[graph.vertex]]
+id = "p11"
+processor = "phase1"
+args = {name="11",id=11}
+input = [{field="Mid",id="Mid1"}]
+output = [{field="ID",id="ID1"}]
+
+[[graph.vertex]]
+processor = "phase2"
+input = [{field="IDs",id="IDs",aggregate=["ID","ID1"]}]
+
+

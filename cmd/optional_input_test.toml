@@ -1,0 +1,11 @@
+name = "optional_input_test.toml"
+
+[[graph]]
+name = "enter"
+
+[[graph.vertex]]
+processor = "phase3"
+
+[[graph.vertex]]
+processor = "phase5"
+input = [{field="ID",id="ID", optional=true}]

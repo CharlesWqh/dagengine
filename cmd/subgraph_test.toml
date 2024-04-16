@@ -1,0 +1,49 @@
+name = "subgraph_test.toml"
+
+[[config_setting]]
+name = "exp10000"
+cond = 'EXP == 10000'
+
+[[graph]]
+name = "enter"
+
+[[graph.vertex]]
+id = "cond"
+cond = "exp10000"
+if = ["sub_graph10000"]
+else = ["default"]
+
+[[graph.vertex]]
+id = "sub_graph10000"
+cluster = "subgraph_test.toml"
+graph = "sub_graph10000"
+
+[[graph.vertex]]
+id = "default"
+cluster = "subgraph_test.toml"
+graph = "default"
+
+[[graph]]
+name = "sub_graph10000"
+
+[[graph.vertex]]
+processor = "phase0"
+args = {name="p1"}
+
+[[graph.vertex]]
+processor = "phase1"
+args = {id=100}
+
+[[graph]]
+name = "default"
+
+[[graph.vertex]]
+id = "p20"
+processor = "phase0"
+
+[[graph.vertex]]
+id = "p21"
+processor = "phase1"
+
+
+

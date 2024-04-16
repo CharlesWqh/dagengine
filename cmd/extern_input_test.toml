@@ -1,0 +1,8 @@
+name = "extern_input_test.toml"
+
+[[graph]]
+name = "enter"
+
+[[graph.vertex]]
+start = true
+processor = "phase3"

@@ -1,0 +1,49 @@
+name = "dep_test.toml"
+
+[[config_setting]]
+name = "exp101"
+cond = 'EXP == 101'
+
+[[graph]]
+name = "enter"
+
+[[graph.vertex]]
+processor = "phase0"
+args = {name="v00",id=0}
+expect = "EXP == 102"
+
+[[graph.vertex]]
+processor = "phase1"
+args = {name="10",id=10}
+deps_on_ok = ["phase0"]
+
+[[graph.vertex]]
+processor = "phase0"
+id = "p01"
+args = {name="v01",id=1}
+output = [{field="Mid",id="Mid1"}]
+expect_config = "exp101"
+
+[[graph.vertex]]
+id = "p11"
+processor = "phase1"
+args = {name="11",id=11}
+input = [{field="Mid",id="Mid1"}]
+output = [{field="ID",id="ID1"}]
+deps_on_ok = ["p01"]
+
+[[graph.vertex]]
+processor = "phase0"
+id = "p02"
+args = {name="v02",id=2}
+output = [{field="Mid",id="Mid2"}]
+deps_on_err = ["phase0", "p01"]
+
+[[graph.vertex]]
+id = "p12"
+processor = "phase1"
+args = {name="12",id=12}
+input = [{field="Mid",id="Mid2"}]
+output = [{field="ID",id="ID2"}]
+deps_on_ok = ["p02"]
+

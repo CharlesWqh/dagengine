@@ -1,0 +1,72 @@
+[
+    {
+        "name": "phase0",
+        "input": [
+        ],
+        "output": [
+            {
+                "name": "Mid"
+            }
+        ]
+    },
+    {
+        "name": "phase1",
+        "input": [
+            {
+                "name": "Mid"
+            }
+        ],
+        "output": [
+            {
+                "name": "ID"
+            }
+        ]
+    },
+    {
+        "name": "phase2",
+        "input": [
+            {
+                "name": "IDs"
+            }
+        ],
+        "output": [
+            {
+                "name": "OK"
+            }
+        ]
+    },
+    {
+        "name": "phase3",
+        "input": [
+        ],
+        "output": [
+            {
+                "name": "OK"
+            }
+        ]
+    },
+    {
+        "name": "phase4",
+        "output": [
+            {
+                "name": "Mid"
+            }
+        ],
+        "input": [
+            {
+                "name": "OK"
+            }
+        ]
+    },
+    {
+        "name": "phase5",
+        "input": [
+            {
+                "name": "ID"
+            },
+            {
+                "name": "OK"
+            }
+        ]
+    }
+]

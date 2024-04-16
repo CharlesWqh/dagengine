@@ -1,0 +1,14 @@
+name = "circle.toml"
+
+## ERROR dsl
+[[graph]]
+name = "circle"
+[[graph.vertex]]
+processor = "phase1"
+
+[[graph.vertex]]
+processor = "phase2"
+input = [{field="IDs",id="IDs",aggregate=["ID"]}]
+
+[[graph.vertex]]
+processor = "phase4"

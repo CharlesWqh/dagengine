@@ -1,0 +1,28 @@
+name = "expect_expect_config_test.toml"
+
+[[config_setting]]
+name = "exp101"
+cond = 'EXP == 101'
+
+[[graph]]
+name = "enter"
+
+[[graph.vertex]]
+processor = "phase0"
+args = {name="v1",id=11}
+expect = "EXP == 102"
+
+[[graph.vertex]]
+processor = "phase0"
+id = "p1"
+args = {name="v12",id=12}
+output = [{field="Mid",id="Mid1"}]
+expect_config = "exp101"
+
+[[graph.vertex]]
+processor = "phase0"
+id = "p2"
+args = {name="v13",id=13}
+output = [{field="Mid",id="Mid2"}]
+deps_on_err = ["phase0", "p1"]
+

@@ -1,0 +1,42 @@
+name = "dep_ret_code_test.toml"
+
+[[config_setting]]
+name = "exp100"
+cond = 'EXP == 100'
+
+[[config_setting]]
+name = "exp101"
+cond = 'EXP == 101'
+
+[[graph]]
+name = "enter"
+
+[[graph.vertex]]
+processor = "phase0"
+args = {name="v00",id=0}
+select_args = [
+    {match='exp100',args={name="v1",id=1}},
+    {match='exp101',args={name="v2",id=2}}
+]
+
+[[graph.vertex]]
+processor = "phase1"
+args = {name="10",id=10}
+expect = "RET_CODE_phase0 == 1"
+
+[[graph.vertex]]
+id = "p11"
+processor = "phase1"
+args = {name="11",id=11}
+input = [{field="Mid",id="Mid"}]
+output = [{field="ID",id="ID1"}]
+expect = "RET_CODE_phase0 == 2"
+
+[[graph.vertex]]
+id = "p12"
+processor = "phase1"
+args = {name="12",id=12}
+input = [{field="Mid",id="Mid"}]
+output = [{field="ID",id="ID2"}]
+deps_on_err = ["p11", "phase1"]
+

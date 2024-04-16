@@ -1,0 +1,22 @@
+name = "select_args.toml"
+
+[[config_setting]]
+name = "exp100"
+cond = 'EXP == 100'
+
+[[config_setting]]
+name = "exp101"
+cond = 'EXP == 101'
+
+[[graph]]
+name = "enter"
+
+[[graph.vertex]]
+start = true
+processor = "phase0"
+args = {name="v0",id=0}
+select_args = [
+    {match='exp100',args={name="v1",id=1}},
+    {match='exp101',args={name="v2",id=2}}
+]
+
